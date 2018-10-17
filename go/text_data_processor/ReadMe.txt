@@ -22,7 +22,7 @@ You can use '-h' Command Line Argument to see the List of supported Arguments.
 // without the prior written permission of the publisher, except in the case
 // of brief quotations embodied in critical reviews and certain other
 // noncommercial uses permitted by copyright law. For permission requests,
-// write to the publisher, addressed “Copyright Protected Material,” at the
+// write to the publisher, addressed “Copyright Protected Material” at the
 // address below.
 //
 //============================================================================//
