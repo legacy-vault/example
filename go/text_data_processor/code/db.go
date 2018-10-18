@@ -42,7 +42,7 @@ var dbSession *mgo.Session
 var dbDatabase string
 var dbCollection *mgo.Collection
 
-// Prepares the Output Database Connection and Dictionary Object.
+// Prepares the Output Database Connection.
 func dbPrepare(
 	outDBAddress string,      // [R]
 	outDBDataBase string,     // [R]

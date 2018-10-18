@@ -49,6 +49,6 @@ type Planet struct {
 	// Life Stage Relative Measurement Parameter.
 	LSRMP float64
 
-	// Is Planet a member of Inter-Galactic Union 'IGC-I'?
+	// Is Planet a Member of Inter-Galactic Union 'IGC-I'?
 	IsAMemberOfIGCUno bool
 }
