@@ -6,7 +6,7 @@ package main
 
 import (
 	"fmt"
-	"test/42_cdllist/code"
+	"github.com/legacy-vault/library/go/compact_double_link_list"
 )
 
 func exampleSafe() {
