@@ -3,9 +3,10 @@
 package main
 
 import (
-	"github.com/legacy-vault/library/go/fixed_size_bubble_cache"
 	"log"
 	"time"
+
+	"github.com/legacy-vault/library/go/fixed_size_bubble_cache"
 )
 
 func main() {
@@ -15,15 +16,15 @@ func main() {
 	c = cache.New(5, 30)
 	log.Println(c.GetRecordTTL())
 
-	c.AddARecord(&cache.Record{UID: "U-1", Data: "John"})
+	c.AddRecord("U-1", "John")
 	log.Println(c.EnlistAllRecordValues())
 
 	time.Sleep(time.Second)
-	c.AddARecord(&cache.Record{UID: "U-2", Data: "Peter"})
+	c.AddRecord("U-2", "Peter")
 	log.Println(c.EnlistAllRecordValues())
 
 	time.Sleep(time.Second)
-	c.AddARecord(&cache.Record{UID: "U-3", Data: "Maria"})
+	c.AddRecord("U-3", "Maria")
 	log.Println(c.EnlistAllRecordValues())
 
 	printDataByUID(c, "U-2")
@@ -35,19 +36,19 @@ func main() {
 	)
 
 	time.Sleep(time.Second * 2)
-	c.AddARecord(&cache.Record{UID: "U-4", Data: "Fox"})
+	c.AddRecord("U-4", "Fox")
 	log.Println(c.EnlistAllRecordValues())
 
 	time.Sleep(time.Second * 2)
-	c.AddARecord(&cache.Record{UID: "U-5", Data: "Go"})
+	c.AddRecord("U-5", "Go")
 	log.Println(c.EnlistAllRecordValues())
 
 	time.Sleep(time.Second * 2)
-	c.AddARecord(&cache.Record{UID: "U-6", Data: "Six"})
+	c.AddRecord("U-6", "Six")
 	log.Println(c.EnlistAllRecordValues())
 
 	time.Sleep(time.Second * 2)
-	c.AddARecord(&cache.Record{UID: "U-7", Data: "777"})
+	c.AddRecord("U-7", "777")
 	log.Println(c.EnlistAllRecordValues())
 
 	time.Sleep(time.Second * 5)
@@ -57,11 +58,11 @@ func main() {
 	printDataByUID(c, "U-3")
 	log.Println(c.EnlistAllRecordValues())
 
-	c.AddARecord(&cache.Record{UID: "U-4", Data: "Fox+"})
+	c.AddRecord("U-4", "Fox+")
 	log.Println(c.EnlistAllRecordValues())
 
 	time.Sleep(time.Second * 2)
-	c.AddARecord(&cache.Record{UID: "U-7", Data: "777+"})
+	c.AddRecord("U-7", "777+")
 	log.Println(c.EnlistAllRecordValues())
 
 	time.Sleep(time.Second * 2)
@@ -69,11 +70,11 @@ func main() {
 	log.Println(c.EnlistAllRecordValues())
 
 	time.Sleep(time.Second * 2)
-	c.AddARecord(&cache.Record{UID: "N-1", Data: "111"})
+	c.AddRecord("N-1", "111")
 	log.Println(c.EnlistAllRecordValues())
 
 	time.Sleep(time.Second * 2)
-	c.AddARecord(&cache.Record{UID: "N-2", Data: "222"})
+	c.AddRecord("N-2", "222")
 	log.Println(c.EnlistAllRecordValues())
 }
 
