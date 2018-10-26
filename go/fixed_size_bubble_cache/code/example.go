@@ -11,9 +11,9 @@ import (
 
 func main() {
 
-	var c *cache.Cache
+	var c *fsbcache.Cache
 
-	c = cache.New(5, 30)
+	c = fsbcache.New(5, 30)
 	log.Println(c.GetRecordTTL())
 
 	c.AddRecord("U-1", "John")
@@ -75,10 +75,17 @@ func main() {
 
 	time.Sleep(time.Second * 2)
 	c.AddRecord("N-2", "222")
+	c.AddRecord("N-3", "333")
+	log.Println(c.EnlistAllRecordValues())
+
+	c.DeleteRecordByUID("N-2")
+	log.Println(c.EnlistAllRecordValues())
+
+	c.DeleteRecordByUID("Wrong-UID")
 	log.Println(c.EnlistAllRecordValues())
 }
 
-func printDataByUID(cache *cache.Cache, uid cache.RecordUID) {
+func printDataByUID(cache *fsbcache.Cache, uid fsbcache.RecordUID) {
 
 	var data interface{}
 	var exists bool
