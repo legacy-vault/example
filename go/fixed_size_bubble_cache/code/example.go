@@ -51,7 +51,16 @@ func main() {
 	c.AddRecord("U-7", "777")
 	log.Println(c.EnlistAllRecordValues())
 
+	log.Println(
+		"Record with UID='U-3' Active Status:",
+		c.RecordUIDIsActive("U-3"),
+	)
+
 	time.Sleep(time.Second * 5)
+	log.Println(
+		"Record with UID='U-3' Active Status:",
+		c.RecordUIDIsActive("U-3"),
+	)
 	log.Println(c.EnlistAllRecordValues())
 
 	// Let's get an outdated Record and see that it is removed.
