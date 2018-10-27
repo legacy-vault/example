@@ -64,8 +64,12 @@ func checkError(err error) {
 func showFileByBTIH(bc *btih_cache.BTIHCache, btih string) {
 
 	var ba []byte
+	var err error
 
-	ba = bc.GetFileByBTIH(btih)
+	ba, err = bc.GetFileByBTIH(btih)
+	if err != nil {
+		log.Println(err)
+	}
 	log.Println(btih, "->", len(ba), "Bytes.")
 }
 
