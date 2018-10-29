@@ -5,8 +5,10 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"log"
+	"os"
 	"time"
 
 	"github.com/legacy-vault/library/go/bencode"
@@ -17,13 +19,18 @@ func main() {
 	var ba []byte
 	var dict []bencode.DictionaryItem
 	var err error
+	var file *os.File
 	var fileName string
+	var filePath string
+	var ifc interface{}
 	var list []interface{}
 	var obj *bencode.DecodedObject
+	var bufioReader *bufio.Reader
 
 	fileName = "../data/" +
 		"xubuntu-17.10.1-desktop-amd64.iso.torrent"
 
+	// File Parsing Example.
 	obj, err = bencode.ParseFile(fileName)
 	checkError(err)
 	fmt.Printf(
@@ -32,6 +39,16 @@ func main() {
 		obj.FilePath,
 		obj.BTIH.Text,
 	)
+
+	// Data Stream Decoding Example.
+	filePath = "../data/test-data.txt"
+	file, err = os.Open(filePath)
+	checkError(err)
+	bufioReader = bufio.NewReader(file)
+	fmt.Printf("ifc=%+v.\r\n", ifc)
+	ifc, err = bencode.Decode(bufioReader)
+	checkError(err)
+	fmt.Printf("ifc=%+v.\r\n", ifc)
 
 	// Try to encode a simple unsigned Integer.
 	ba, err = bencode.Encode(uint(111))
