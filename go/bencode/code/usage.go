@@ -49,6 +49,8 @@ func main() {
 	ifc, err = bencode.Decode(bufioReader)
 	checkError(err)
 	fmt.Printf("ifc=%+v.\r\n", ifc)
+	err = file.Close()
+	checkError(err)
 
 	// Try to encode a simple unsigned Integer.
 	ba, err = bencode.Encode(uint(111))
