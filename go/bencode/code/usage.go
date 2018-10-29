@@ -6,9 +6,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/legacy-vault/library/go/bencode"
 	"log"
 	"time"
+
+	"github.com/legacy-vault/library/go/bencode"
 )
 
 func main() {
@@ -32,13 +33,63 @@ func main() {
 		obj.BTIH.Text,
 	)
 
-	// Try to encode a simple Integer.
-	ba, err = bencode.Encode(uint64(123))
+	// Try to encode a simple unsigned Integer.
+	ba, err = bencode.Encode(uint(111))
+	checkError(err)
+	fmt.Println(string(ba))
+
+	// Try to encode a simple signed Integer.
+	ba, err = bencode.Encode(int(-222))
+	checkError(err)
+	fmt.Println(string(ba))
+
+	// Try to encode a simple unsigned 64-Bit Integer.
+	ba, err = bencode.Encode(uint64(111))
+	checkError(err)
+	fmt.Println(string(ba))
+
+	// Try to encode a simple signed 64-Bit Integer.
+	ba, err = bencode.Encode(int64(-222))
+	checkError(err)
+	fmt.Println(string(ba))
+
+	// Try to encode a simple unsigned 32-Bit Integer.
+	ba, err = bencode.Encode(uint32(111))
+	checkError(err)
+	fmt.Println(string(ba))
+
+	// Try to encode a simple signed 32-Bit Integer.
+	ba, err = bencode.Encode(int32(-222))
+	checkError(err)
+	fmt.Println(string(ba))
+
+	// Try to encode a simple unsigned 16-Bit Integer.
+	ba, err = bencode.Encode(uint16(16001))
+	checkError(err)
+	fmt.Println(string(ba))
+
+	// Try to encode a simple signed 16-Bit Integer.
+	ba, err = bencode.Encode(int16(-16001))
+	checkError(err)
+	fmt.Println(string(ba))
+
+	// Try to encode a simple unsigned 8-Bit Integer.
+	ba, err = bencode.Encode(uint8(8))
+	checkError(err)
+	fmt.Println(string(ba))
+
+	// Try to encode a simple signed 8-Bit Integer.
+	ba, err = bencode.Encode(int8(-8))
 	checkError(err)
 	fmt.Println(string(ba))
 
 	// Try to encode a simple Byte String.
 	ba, err = bencode.Encode([]byte("Hello, World!"))
+	checkError(err)
+	fmt.Println(string(ba))
+
+	// Try to encode a simple String.
+	ba, err = bencode.Encode("I am alive")
 	checkError(err)
 	fmt.Println(string(ba))
 
