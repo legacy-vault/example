@@ -174,4 +174,26 @@ func main() {
 	for _, aFile := range files {
 		fmt.Println(aFile)
 	}
+
+	// List Files with allowed Extensions.
+	fmt.Println("Files (All Levels, Allowed Extensions List):")
+	files = file.ListFilesExtAllowed(
+		path,
+		true,
+		[]string{"txt", "torrent"},
+	)
+	for _, aFile := range files {
+		fmt.Println(aFile)
+	}
+
+	// List Files without forbidden Extensions.
+	fmt.Println("Files (All Levels, Forbidden Extensions List):")
+	files = file.ListFilesExtForbidden(
+		path,
+		true,
+		[]string{"txt"},
+	)
+	for _, aFile := range files {
+		fmt.Println(aFile)
+	}
 }
